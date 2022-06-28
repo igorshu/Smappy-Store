@@ -1,0 +1,96 @@
+name: smappy_store
+description: Smappy Store is the new Flutter project
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.1 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  get_it: ^7.2.0
+  cupertino_icons: ^1.0.5
+  responsive_framework: ^0.2.0
+  flutter_svg: ^1.1.0
+  flutter_bloc: ^8.0.1
+  logger: ^1.1.0
+  retrofit: ^3.0.1+1
+  dio: ^4.0.6
+  freezed_annotation: ^2.0.3
+  extension: ^0.5.0
+  beamer: ^1.5.0
+  easy_localization: ^3.0.1
+  flutter_form_builder: ^7.3.0
+  form_builder_validators: ^8.1.1
+  flutter_multi_formatter: ^2.5.7
+  json_annotation: ^4.5.0
+  flutter_keyboard_visibility: ^5.3.0
+  pin_code_fields: ^7.4.0
+  smooth_page_indicator: ^1.0.0+2
+  flutter_countdown_timer: ^4.1.0
+  shared_preferences: ^2.0.15
+  flutter_email_sender: ^5.1.0
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.1
+  build_runner: ^2.1.11
+  freezed: ^2.0.3+1
+  json_serializable: ^6.2.0
+  retrofit_generator: ^4.0.1
+
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+   - assets/images/
+   - assets/translations/
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+
+  fonts:
+    - family: NoirPro-Light
+      fonts:
+        - asset: assets/fonts/noir_pro/NoirPro-Light.ttf
+          weight: 300
+
+    - family: NoirPro-Regular
+      fonts:
+        - asset: assets/fonts/noir_pro/NoirPro-Regular.ttf
+          weight: 400
+
+    - family: NoirPro-Medium
+      fonts:
+        - asset: assets/fonts/noir_pro/NoirPro-Medium.ttf
+          weight: 500
+
+# 600
+
+    - family: NoirPro-Bold
+      fonts:
+        - asset: assets/fonts/noir_pro/NoirPro-Bold.ttf
+          weight: 700
+
+# 800
+
+    - family: NoirPro-Heavy
+      fonts:
+        - asset: assets/fonts/noir_pro/NoirPro-Heavy.ttf
+          weight: 900
+
