@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:smappy_store/logic/smappy_bloc/smappy_bloc.dart';
 import 'package:smappy_store/ui/navigation/routes.dart';
+import 'package:smappy_store/ui/other/input_decorations.dart';
 import 'package:smappy_store/ui/other/ui_utils.dart';
 import 'package:smappy_store/ui/widgets/bold_title_text.dart';
 import 'package:smappy_store/ui/widgets/error_text.dart';
@@ -66,7 +67,7 @@ class _SmappyScreenState extends State<SmappyScreen> {
                           ),
                         ),
                         const SizedBox(height: 15),
-                        ErrorText(st.error),
+                        ErrorText(st.error, visibility: true),
                         const SizedBox(height: 18),
                         GoNextText('smappy_demand_invite'.tr(), onTap: () => _showBottomSheet(context))
                       ],
@@ -105,9 +106,7 @@ class _SmappyScreenState extends State<SmappyScreen> {
         return BlocProvider.value(
           value: provider,
           child: BlocConsumer<SmappyBloc, SmappyState>(
-            listener: (context, state) {
-              // TODO: implement listener
-            },
+            listener: (context, state) {},
             builder: (context, state) {
               return FractionallySizedBox(
                 heightFactor: 0.9,

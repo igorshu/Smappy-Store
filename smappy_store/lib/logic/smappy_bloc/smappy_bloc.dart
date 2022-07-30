@@ -52,9 +52,9 @@ class SmappyBloc extends BaseBloc<SmappyEvent, SmappyState>  {
 
   _sendEmail(SendEmail event, Emitter<SmappyState> emit) async {
     final Email email = Email(
-      body: 'Email: ${state.email}'
-          'Phone: ${state.phone}'
-          'Catalog: ${state.catalog}',
+      body: 'Email: ${state.email}\n'
+          'Phone: ${state.phone}\n'
+          'Catalog: ${state.catalog}\n',
       subject: 'Smappy',
       recipients: ['stores@smappy.co'],
       isHTML: false,

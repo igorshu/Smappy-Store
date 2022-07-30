@@ -7,8 +7,9 @@ import 'package:smappy_store/ui/other/styles.dart';
 class GoBackButton extends StatelessWidget {
 
   final void Function()? onTap;
+  final String? text;
 
-  const GoBackButton({this.onTap, Key? key}) : super(key: key);
+  const GoBackButton({this.onTap, Key? key, this.text}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class GoBackButton extends StatelessWidget {
             children: [
               Image.asset('assets/images/back.png', height: 17, color: AppColors.purple),
               const SizedBox(width: 8),
-              Text('back'.tr(), style: AppStyles.backStyle),
+              Text(text ?? 'back'.tr(), style: AppStyles.backStyle),
             ],
           ),
         ),

@@ -35,6 +35,7 @@ abstract class BaseBloc<E, S> extends Bloc<E, S> {
       }
       Logger().e(err);
       add(getErrorEvent(err));
+      super.onError(error, stackTrace);
     } else {
       Logger().e(error);
       add(getErrorEvent(error.toString()));

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:smappy_store/ui/other/input_decorations.dart';
 import 'package:smappy_store/ui/other/styles.dart';
-import 'package:smappy_store/ui/other/ui_utils.dart';
 
 class PasswordField extends StatefulWidget {
 

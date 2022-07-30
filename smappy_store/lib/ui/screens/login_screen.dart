@@ -67,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           _loginForm(st),
 
                           const SizedBox(height: 15),
-                          ErrorText(authState.error),
+                          ErrorText(authState.error, visibility: true),
                           Align(
                             alignment: Alignment.centerLeft,
                             child: GestureDetector(
@@ -100,10 +100,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   _formKey.currentState!.save();
                   if (_formKey.currentState!.validate()) {
                     context.read<AuthBloc>().add(
-                        Login(
-                          phone: _formKey.currentState!.value['phone'],
-                          password: _formKey.currentState!.value['password'],
-                        )
+                      Login(
+                        phone: _formKey.currentState!.value['phone'],
+                        password: _formKey.currentState!.value['password'],
+                      ),
                     );
                   } else {
                     var errorPhone = FormBuilderValidators.compose([

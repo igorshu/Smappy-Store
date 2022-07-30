@@ -52,7 +52,7 @@ class _RegCodePageState extends State<RegCodePage> {
                     onCompleted: (code) => context.read<RegistrationBloc>().add(ChangeCode(code: code)),
                   ),
                   const SizedBox(height: 19.5),
-                  ErrorText(st.error),
+                  ErrorText(st.error, visibility: true),
                 ],
               ),
             ),

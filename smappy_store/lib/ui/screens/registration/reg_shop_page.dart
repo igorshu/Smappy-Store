@@ -45,7 +45,7 @@ class RegShopPage extends StatelessWidget {
               textInputAction: TextInputAction.send,
             ),
             const SizedBox(height: 20),
-            ErrorText(st.error),
+            ErrorText(st.error, visibility: true),
           ],
         ),
       ),

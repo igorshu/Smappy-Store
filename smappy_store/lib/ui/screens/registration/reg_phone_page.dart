@@ -39,7 +39,7 @@ class RegPhonePage extends StatelessWidget {
                   const SizedBox(height: 19.5),
                   const HorizontalGrayLine(),
                   const SizedBox(height: 19.5),
-                  ErrorText(st.error),
+                  ErrorText(st.error, visibility: true),
                 ],
               ),
             ),

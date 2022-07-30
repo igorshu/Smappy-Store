@@ -11,8 +11,17 @@ class PurpleButton extends StatefulWidget {
   final bool active;
   final bool loading;
   final void Function() onTap;
+  final EdgeInsets? padding;
 
-  const PurpleButton({super.key, required this.text, required this.loadingText, required this.active, required this.loading, required this.onTap});
+  const PurpleButton({
+    super.key,
+    required this.text,
+    required this.loadingText,
+    required this.active,
+    required this.loading,
+    required this.onTap,
+    this.padding,
+  });
 
   @override
   State<StatefulWidget> createState() => _PurpleButtonState();
@@ -23,7 +32,7 @@ class _PurpleButtonState extends State<PurpleButton> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 25, right: 25, top: 20, bottom: 20),
+      padding: widget.padding ?? const EdgeInsets.only(left: 25, right: 25, top: 20, bottom: 20),
       child: GestureDetector(
         onTap: widget.active && !widget.loading ? widget.onTap : null,
         child: Container(

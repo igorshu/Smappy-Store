@@ -56,7 +56,7 @@ class RegPasswordPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 19.5),
-                  ErrorText(st.error),
+                  ErrorText(st.error, visibility: true),
                   // const Spacer(),
                 ],
               ),

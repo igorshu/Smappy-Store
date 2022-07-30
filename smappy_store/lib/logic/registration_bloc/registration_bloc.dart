@@ -12,7 +12,7 @@ part 'registration_state.dart';
 
 enum RegStep {phone, code, password, shop}
 
-class RegistrationBloc  extends BaseBloc<RegistrationEvent, RegistrationState>  {
+class RegistrationBloc extends BaseBloc<RegistrationEvent, RegistrationState>  {
 
   @override
   RegistrationEvent getErrorEvent(String error) => RegistrationError(error: error);
@@ -82,7 +82,7 @@ class RegistrationBloc  extends BaseBloc<RegistrationEvent, RegistrationState>  
       case RegStep.phone:
         emit(state.copyWith(loading: true, phone: event.phone!));
         var response = await ApiRepo.shopRegistration(event.phone!, state.smappyCode); // code 200 is success
-        LocalRepo.saveUserId(response.id);
+        await LocalRepo.saveShopId(response.id);
         emit(state.copyWith(
           step: RegStep.code,
           verificationCode: response.verificationCode!,
@@ -97,7 +97,7 @@ class RegistrationBloc  extends BaseBloc<RegistrationEvent, RegistrationState>  
         emit(state.copyWith(loading: true));
         var response = await ApiRepo.shopVerifyPhoneNumber(state.userId!, event.code!);
         await LocalRepo.saveToken(response.token);
-        ApiRepo.setToken(response.token);
+        ApiRepo.setAuthToken(response.token);
         emit(state.copyWith(
           step: RegStep.password,
           loading: false,

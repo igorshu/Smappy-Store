@@ -34,6 +34,7 @@ dependencies:
   flutter_countdown_timer: ^4.1.0
   shared_preferences: ^2.0.15
   flutter_email_sender: ^5.1.0
+  image_picker: ^0.8.5+3
 
 
 dev_dependencies:
@@ -80,14 +81,15 @@ flutter:
         - asset: assets/fonts/noir_pro/NoirPro-Medium.ttf
           weight: 500
 
-# 600
+    - family: NoirPro-SemiBold
+      fonts:
+        - asset: assets/fonts/noir_pro/NoirPro-SemiBold.ttf
+          weight: 600
 
     - family: NoirPro-Bold
       fonts:
         - asset: assets/fonts/noir_pro/NoirPro-Bold.ttf
           weight: 700
-
-# 800
 
     - family: NoirPro-Heavy
       fonts:

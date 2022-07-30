@@ -5,16 +5,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:form_builder_validators/localization/l10n.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smappy_store/logic/auth_bloc/auth_bloc.dart';
 import 'package:smappy_store/logic/keyboard_bloc/keyboard_bloc.dart';
 import 'package:smappy_store/ui/navigation/smappy_beamer_delegate.dart';
 import 'package:smappy_store/ui/other/colors.dart';
 import 'package:smappy_store/ui/other/ui_utils.dart';
+import 'package:get_it/get_it.dart';
 
 late BeamerDelegate beamerDelegate;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  GetIt.I.registerSingleton<SharedPreferences>(await SharedPreferences.getInstance());
   await EasyLocalization.ensureInitialized();
 
   beamerDelegate = SmappyBeamerDelegate();
@@ -42,6 +45,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       routeInformationParser: BeamerParser(),
       routerDelegate: beamerDelegate,
+      backButtonDispatcher: BeamerBackButtonDispatcher(delegate: beamerDelegate),
       localizationsDelegates: context.localizationDelegates
         ..add(FormBuilderLocalizations.delegate),
       supportedLocales: context.supportedLocales,

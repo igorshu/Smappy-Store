@@ -20,8 +20,10 @@ class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
 
   _login(Login event, Emitter<AuthState> emit) async {
     emit(const AuthState(logging: true));
-    var loginResponse = await ApiRepo.login(event.phone, event.password);
+    var loginResponse = await ApiRepo.shopLogin(event.phone, event.password);
     await LocalRepo.saveToken(loginResponse.token);
+    ApiRepo.setAuthToken(loginResponse.token);
+    await LocalRepo.saveShopId(loginResponse.id);
     emit(AuthState(token: loginResponse.token, logging: false));
   }
 
