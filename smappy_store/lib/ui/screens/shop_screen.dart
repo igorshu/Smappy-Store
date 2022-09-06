@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -82,7 +83,7 @@ class _ShopScreenState extends State<ShopScreen> {
                     ]
                   ),
                 ),
-                ErrorText(st.error, visibility: st.isError, padding: const EdgeInsets.symmetric(horizontal: 25)),
+                ErrorText(st.error, padding: const EdgeInsets.symmetric(horizontal: 25)),
                 _shopContent(st),
               ],
             ),
@@ -204,7 +205,7 @@ class _ShopScreenState extends State<ShopScreen> {
                           behavior: NoGlowBehavior(),
                           child: SingleChildScrollView(
                             controller: scrollController,
-                            child: const ProductPage()
+                            child: const ProductPage(embed: ProductPageEmbed.modal)
                           ),
                         ),
                       ),
@@ -232,6 +233,8 @@ class _ShopScreenState extends State<ShopScreen> {
             name = '$name\n';
           }
 
+          var price = '${product.price} руб.';
+
           return GestureDetector(
             onTap: () => Routes.openProductScreen(context, product),
             child: Column(
@@ -248,11 +251,11 @@ class _ShopScreenState extends State<ShopScreen> {
                       borderWidth: 0.5,
                       color: Colors.grey,
                     ),
-                    Image.network(photoUrl, fit: BoxFit.cover, width: imageWidth, height: imageHeight),
+                    CachedNetworkImage(imageUrl: photoUrl, fit: BoxFit.cover, width: imageWidth, height: imageHeight),
                   ),
                 ),
                 const Spacer(flex: 2),
-                Text('${product.price} \$', style: AppStyles.priceTextStyle, overflow: TextOverflow.ellipsis),
+                Text(price, style: AppStyles.priceTextStyle, overflow: TextOverflow.ellipsis),
                 const Spacer(flex: 1),
                 Text(name, style: AppStyles.productNameTextStyle, overflow: TextOverflow.ellipsis, maxLines: 2),
                 const Spacer(flex: 1),

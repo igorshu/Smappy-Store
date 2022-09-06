@@ -4,30 +4,38 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:smappy_store/core/api/products/category.dart';
 import 'package:smappy_store/ui/other/styles.dart';
+import 'package:smappy_store/ui/widgets/horizontal_gray_line.dart';
 import 'package:smappy_store/ui/widgets/product_screen/category_widget.dart';
 
 class EditableCategories extends FormBuilderField<List<String>> {
 
   final List<Category> productCategories;
-  final List<Category> categories;
+  final List<Category> allCategories;
   final bool editing;
 
-  EditableCategories({super.key, required String name, required this.productCategories, required this.categories, required this.editing})
+  EditableCategories({
+    super.key,
+    required String name,
+    required this.productCategories,
+    required this.allCategories,
+    required this.editing,
+  })
     : super(
       name: name,
       initialValue: productCategories.map((category) => category.id.toString()).toList(),
       builder: (FormFieldState<List<String>> field) {
-        bool selected(Category category) {
-          return (field.value ?? []).map((id) => id).contains(category.id.toString());
-        }
+
+        bool selected(Category category) => (field.value ?? []).map((id) => id).contains(category.id.toString());
 
         List<Widget> _categories(String title, Iterable<Category> categories) {
           return [
-            Text(
-              title,
-              style: AppStyles.editCategoriesTextStyle,
+            Visibility(
+              visible: title.isNotEmpty,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Text(title, style: AppStyles.editCategoriesTextStyle)),
             ),
-            const SizedBox(height: 10),
+
             Wrap(
               spacing: 0,
               runSpacing: 0,
@@ -62,14 +70,23 @@ class EditableCategories extends FormBuilderField<List<String>> {
           ];
         }
 
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ..._categories('add_good_title_holiday'.tr(), categories.where((category) => category.accessory)),
-            const SizedBox(height: 20),
-            ..._categories('add_good_title_category'.tr(), categories.where((category) => !category.accessory)),
-          ],
-        );
+        return editing
+              ? Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ..._categories('add_good_title_holiday'.tr(), allCategories.where((category) => category.accessory)),
+                  const SizedBox(height: 20),
+                  ..._categories('add_good_title_category'.tr(), allCategories.where((category) => !category.accessory)),
+                  const HorizontalGrayLine(top: 20, bottom: 20),
+                ],
+              )
+              : field.value?.isEmpty ?? true ? const Center() : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ..._categories('', allCategories),
+                  const HorizontalGrayLine(top: 20, bottom: 20),
+                ],
+              );
       }
     );
 }

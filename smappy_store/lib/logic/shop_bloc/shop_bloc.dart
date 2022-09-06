@@ -28,11 +28,13 @@ class ShopBloc extends BaseBloc<ShopEvent, ShopState> {
   _loadProducts(LoadProducts event, Emitter<ShopState> emit) async {
     emit(state.copyWith(loading: true));
     var categories = await ApiRepo.getCategories('RU'); // Available values : RU, EN
-    LocalRepo.saveCategories(categories); // no await
+    await LocalRepo.saveCategories(categories);
 
-    var shopId = LocalRepo.getShopId();
-    var products = await ApiRepo.getProducts(shopId: shopId!);
-    emit(state.copyWith(loading: false, products: products));
+    var shopId = await LocalRepo.getShopId();
+    var remoteProducts = await ApiRepo.getProducts(shopId: shopId!);
+
+    var localProducts = await LocalRepo.syncProductRecords(remoteProducts);
+    emit(state.copyWith(loading: false, products: localProducts));
   }
 
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:smappy_store/ui/other/colors.dart';
 import 'package:smappy_store/ui/other/input_decorations.dart';
 import 'package:smappy_store/ui/other/styles.dart';
 
@@ -41,6 +42,7 @@ class _PasswordFieldState extends State<PasswordField> {
             obscureText: widget.obscure,
             autofocus: widget.autofocus ?? false,
             name: widget.name ?? 'password',
+            cursorColor: AppColors.purple,
             decoration: AppInputDecoration(hintText: widget.hintText),
             style: AppStyles.textFieldTextStyle,
             onChanged: widget.onChanged,

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smappy_store/ui/other/colors.dart';
 import 'package:smappy_store/ui/other/styles.dart';
@@ -10,6 +9,7 @@ class PurpleButton extends StatefulWidget {
   final String loadingText;
   final bool active;
   final bool loading;
+  final bool hollow;
   final void Function() onTap;
   final EdgeInsets? padding;
 
@@ -21,6 +21,7 @@ class PurpleButton extends StatefulWidget {
     required this.loading,
     required this.onTap,
     this.padding,
+    this.hollow = false,
   });
 
   @override
@@ -40,12 +41,15 @@ class _PurpleButtonState extends State<PurpleButton> {
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(12)),
-            color: widget.active ? AppColors.purple : AppColors.inactive,
+            color: widget.active ? widget.hollow ? Colors.transparent : AppColors.purple : AppColors.inactive,
+            border: widget.hollow ? Border.all(color: AppColors.purple) : null,
           ),
           child: Stack(
             children: [
               Center(
-                child: Text(widget.loading ? widget.loadingText : widget.text, style: AppStyles.buttonTextStyle),
+                child: Text(
+                  widget.loading ? widget.loadingText : widget.text,
+                  style: widget.hollow ? AppStyles.buttonTextStyle.copyWith(color: AppColors.purple) : AppStyles.buttonTextStyle),
               ),
               Visibility(
                 visible: widget.loading,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:smappy_store/ui/other/colors.dart';
 import 'package:smappy_store/ui/other/input_decorations.dart';
 import 'package:smappy_store/ui/other/styles.dart';
 
@@ -19,6 +20,8 @@ class AppTextField extends StatelessWidget {
   final bool? multiline;
   final String? initialValue;
   final bool? enabled;
+  final TextStyle? style;
+  final ValueTransformer<String?>? valueTransformer;
 
   const AppTextField({
     Key? key,
@@ -35,6 +38,8 @@ class AppTextField extends StatelessWidget {
     this.controller,
     this.decoration,
     this.multiline,
+    this.style,
+    this.valueTransformer,
   }) : super(key: key);
 
   @override
@@ -43,8 +48,9 @@ class AppTextField extends StatelessWidget {
       initialValue: initialValue,
       controller: controller,
       name: name,
+      cursorColor: AppColors.purple,
       decoration: decoration ?? AppInputDecoration(hintText: hintText, labelText: labelText),
-      style: AppStyles.textFieldTextStyle,
+      style: style ?? AppStyles.textFieldTextStyle,
       validator: validator,
       onChanged: onChanged,
       autocorrect: false,
@@ -52,6 +58,7 @@ class AppTextField extends StatelessWidget {
       inputFormatters: inputFormatter == null ? null : [inputFormatter!],
       keyboardType: keyboardType,
       textInputAction: textInputAction,
+      valueTransformer: valueTransformer,
     );
   }
 

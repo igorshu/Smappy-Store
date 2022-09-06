@@ -31,7 +31,9 @@ class TagsField extends StatelessWidget {
       decoration: AppInputDecoration(hintText: hintText, labelText: labelText),
       style: AppStyles.textFieldTextStyle,
       onChanged: onChanged,
-      valueTransformer: (String? value) => value?.replaceAll('#', '').replaceAll(RegExp(r'\s+'), ','),
+      valueTransformer: (String? value) {
+        return value?.replaceAll('#', '').replaceAll(RegExp(r'\s+'), ',').replaceAll(RegExp(r'\,+'), ',');
+      },
       inputFormatters: [TagsTextFormatter()],
       autocorrect: false,
       keyboardType: TextInputType.text,

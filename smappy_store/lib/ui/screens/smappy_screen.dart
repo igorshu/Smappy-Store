@@ -122,7 +122,7 @@ class _SmappyScreenState extends State<SmappyScreen> {
                               Align(
                                 alignment: Alignment.centerRight,
                                 child: GestureDetector(
-                                  onTap: () => Navigator.pop(context),
+                                  onTap: () => hideModalBottomSheet(context),
                                   behavior: HitTestBehavior.opaque,
                                   child: Padding(
                                       padding: const EdgeInsets.only(left: 5, bottom: 5),
@@ -141,7 +141,7 @@ class _SmappyScreenState extends State<SmappyScreen> {
                                 name: 'email',
                                 onChanged: (email) => context.read<SmappyBloc>().add(ChangeEmail(email: email!)),
                                 keyboardType: TextInputType.emailAddress,
-                                decoration: RequestDecoration(hintText: 'smappy_email_hint'.tr()),
+                                decoration: ShadowDecoration(hintText: 'smappy_email_hint'.tr()),
                               ),
                               const SizedBox(height: 30),
 
@@ -172,7 +172,7 @@ class _SmappyScreenState extends State<SmappyScreen> {
                       active: state.email.isNotEmpty,
                       onTap: () {
                         context.read<SmappyBloc>().add(const SendEmail());
-                        Navigator.pop(context);
+                        hideModalBottomSheet(context);
                       },
                       loading: false,
                     )

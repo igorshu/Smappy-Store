@@ -30,5 +30,6 @@ class ProductEvent with _$ProductEvent {
     required String tags,
     required List<String> photos,
   }) = AddProduct;
+  const factory ProductEvent.getCategories() = GetCategories;
 
 }

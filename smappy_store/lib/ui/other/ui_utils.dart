@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 double statusBarHeight(context) => MediaQuery.of(context).padding.top;
 
@@ -30,3 +32,20 @@ class NoGlowBehavior extends ScrollBehavior {
     return child;
   }
 }
+
+Future<void> sendEmail({required String recipient, required String subject, required String text}) async {
+  final Email email = Email(
+    body: text,
+    subject: 'Smappy',
+    recipients: [recipient],
+    isHTML: false,
+  );
+
+  await FlutterEmailSender.send(email);
+}
+
+Future<bool> openUrl(String url) async {
+  return await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+}
+
+void hideModalBottomSheet(BuildContext context) => Navigator.pop(context);

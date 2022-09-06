@@ -65,7 +65,5 @@ class Product {
   factory Product.fromJson(Map<String, dynamic> json) => _$ProductFromJson(json);
   Map<String, dynamic> toJson() => _$ProductToJson(this);
 
-  String get tags2String {
-    return tags?.map((tag) => '#${tag.name}').toList().join(', ') ?? '';
-  }
+  String get tags2String => tags?.map((tag) => '#${tag.name}').toList().join(', ') ?? '';
 }

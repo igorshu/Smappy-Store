@@ -18,5 +18,6 @@ class ProductState with _$ProductState {
     @Default(false) bool deleted,
     @Default(ProductAction.show) ProductAction action,
     @Default(null) Product? product,
+    @Default(null) List<Category>? categories,
   }) = _ProductState;
 }

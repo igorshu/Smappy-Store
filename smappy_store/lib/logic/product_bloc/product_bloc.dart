@@ -4,8 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:logger/logger.dart';
 import 'package:smappy_store/core/api/add_save_product/add_product_response.dart';
+import 'package:smappy_store/core/api/products/category.dart';
 import 'package:smappy_store/core/api/products/product.dart';
+import 'package:smappy_store/core/api/products/product_record.dart';
 import 'package:smappy_store/core/repository/api_repo.dart';
+import 'package:smappy_store/core/repository/local_repo.dart';
 import 'package:smappy_store/logic/other/base_bloc.dart';
 
 part 'product_bloc.freezed.dart';
@@ -23,6 +26,7 @@ class ProductBloc extends BaseBloc<ProductEvent, ProductState> {
     on<ProductSave>(_productSave);
     on<ProductSaving>(_productSaving);
     on<ProductDelete>(_productDelete);
+    on<GetCategories>(_getCategories);
   }
 
   _addEditError(ProductError event, Emitter<ProductState> emit) {
@@ -32,11 +36,9 @@ class ProductBloc extends BaseBloc<ProductEvent, ProductState> {
   _addProduct(AddProduct event, Emitter<ProductState> emit) async {
     emit(state.copyWith(loading: true));
     Logger().d(event);
-    var imageList = event.photos.map((photo) {
-      return File(photo);
-    }).toList();
+    var imageList = event.photos.map((photo) => File(photo)).toList();
 
-    await ApiRepo.addProduct(
+    ProductResponse productResponse = await ApiRepo.addProduct(
       name: event.name,
       price: event.price!,
       webSite: event.link,
@@ -46,6 +48,13 @@ class ProductBloc extends BaseBloc<ProductEvent, ProductState> {
       photos: imageList,
       inGiftForList: null, // TODO add
     );
+
+    Product product = Product.fromProductResponse(productResponse);
+    var productRecord = ProductRecord.fromProduct(product);
+    var productRecords = await LocalRepo.getProductRecords();
+    productRecords.add(productRecord);
+    await LocalRepo.saveProductRecords(productRecords);
+
     emit(state.copyWith(loading: false, added: true));
   }
 
@@ -75,6 +84,14 @@ class ProductBloc extends BaseBloc<ProductEvent, ProductState> {
       photos: imageList,
       inGiftForList: null, // TODO add
     );
+
+    Product product = Product.fromProductResponse(response);
+    var productRecord = ProductRecord.fromProduct(product);
+    var productRecords = await LocalRepo.getProductRecords();
+    productRecords.removeWhere((pr) => pr.product.id == productRecord.product.id);
+    productRecords.add(productRecord);
+    await LocalRepo.saveProductRecords(productRecords);
+
     emit(state.copyWith(
       saving: false,
       loading: false,
@@ -89,6 +106,16 @@ class ProductBloc extends BaseBloc<ProductEvent, ProductState> {
   _productDelete(ProductDelete event, Emitter<ProductState> emit) async {
     emit(state.copyWith(loading: true));
     await ApiRepo.deleteProduct(event.product.id.toString());
+
+    var productRecords = await LocalRepo.getProductRecords();
+    productRecords.firstWhere((pr) => pr.product.id == event.product.id).deleted = true;
+    await LocalRepo.saveProductRecords(productRecords);
+
     emit(state.copyWith(loading: false, deleted: true));
+  }
+
+  _getCategories(GetCategories event, Emitter<ProductState> emit) async {
+    var categories = await LocalRepo.getCategories();
+    emit(state.copyWith(categories: categories));
   }
 }

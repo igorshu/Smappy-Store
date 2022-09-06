@@ -17,6 +17,7 @@ class ShopRequest {
   final String? instagram;
   final String? country;
   final bool? best;
+  final bool? allowCountryDelivery;
 
   ShopRequest({
     this.id,
@@ -31,13 +32,12 @@ class ShopRequest {
     this.instagram,
     this.country,
     this.best,
+    this.allowCountryDelivery,
   });
 
   factory ShopRequest.fromJson(Map<String, dynamic> json) => _$ShopRequestFromJson(json);
   Map<String, dynamic> toJson() => _$ShopRequestToJson(this);
 
   @override
-  String toString() {
-    return 'ShopRequest {id: $id, name: $name, email: $email, password: $password, address: $address, description: $description, webSite: $webSite, mail: $mail, whatsapp: $whatsapp, instagram: $instagram, country: $country, best: $best}';
-  }
+  String toString() => 'ShopRequest {id: $id, name: $name, email: $email, password: $password, address: $address, description: $description, webSite: $webSite, mail: $mail, whatsapp: $whatsapp, instagram: $instagram, country: $country, best: $best, allowCountryDelivery: $allowCountryDelivery}';
 }

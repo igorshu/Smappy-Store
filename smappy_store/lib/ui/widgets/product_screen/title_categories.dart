@@ -65,7 +65,7 @@ class _TitleCategoriesState extends State<TitleCategories> {
         ),
         Padding(
           padding: const EdgeInsets.only(top: 20),
-          child: EditableCategories(name: widget.name, productCategories: widget.product?.categories ?? [], categories: widget.categories, editing: editing),
+          child: EditableCategories(name: widget.name, productCategories: widget.product?.categories ?? [], allCategories: widget.categories, editing: editing),
         ),
       ],
     );

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:smappy_store/ui/other/colors.dart';
 import 'package:smappy_store/ui/widgets/if.dart';
@@ -33,7 +34,7 @@ class PhotoWidget extends StatelessWidget {
         child: If(
           photoData.local,
           Image.file(File(photoData.url), width: 95, height: 95, fit: BoxFit.cover),
-          Image.network(photoData.url, width: 95, height: 95, fit: BoxFit.cover),
+          CachedNetworkImage(imageUrl: photoData.url, width: 95, height: 95, fit: BoxFit.cover),
         ),
       ),
     );

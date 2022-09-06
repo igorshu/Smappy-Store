@@ -7,7 +7,7 @@ class AuthInterceptor extends Interceptor {
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
-    token ??= LocalRepo.getToken();
+    token ??= await LocalRepo.getToken();
     if (token != null) {
       options.headers.addAll({"Authorization": "Bearer $token"});
     }

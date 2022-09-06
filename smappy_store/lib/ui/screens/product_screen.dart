@@ -48,14 +48,6 @@ class _ProductScreenState extends State<ProductScreen> {
                         child: PurpleText('add_good_edit'.tr())
                       )
                     ),
-                    // TODO remove?
-                    // Visibility(
-                    //   visible: false && st.isEdit && !st.loading,
-                    //   child: GestureDetector(
-                    //     onTap: () => Beamer.of(context).beamBack(),
-                    //     child: PurpleText('add_good_close'.tr()))
-                    // ),
-                    // Visibility(visible: false && st.isEdit && !st.loading, child: const Spacer()),
                     Visibility(
                       visible: st.isEdit,
                       child: Opacity(
@@ -97,7 +89,7 @@ class _ProductScreenState extends State<ProductScreen> {
                   child: SingleChildScrollView(
                     child: Column(
                       children: const [
-                        ProductPage(),
+                        ProductPage(embed: ProductPageEmbed.widget),
                       ],
                     ),
                   ),

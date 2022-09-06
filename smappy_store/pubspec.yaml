@@ -35,6 +35,13 @@ dependencies:
   shared_preferences: ^2.0.15
   flutter_email_sender: ^5.1.0
   image_picker: ^0.8.5+3
+  url_launcher: ^6.1.5
+  rx_shared_preferences: ^3.0.0
+  flutter_staggered_grid_view: ^0.6.2
+  rxdart: ^0.27.5
+  cached_network_image: ^3.2.1
+  http_parser: ^4.0.1
+  google_maps_webservice: ^0.0.20-nullsafety.5
 
 
 dev_dependencies:
@@ -46,6 +53,7 @@ dev_dependencies:
   freezed: ^2.0.3+1
   json_serializable: ^6.2.0
   retrofit_generator: ^4.0.1
+  flutter_launcher_icons: ^0.10.0
 
 flutter:
 

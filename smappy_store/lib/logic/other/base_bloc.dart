@@ -41,4 +41,7 @@ abstract class BaseBloc<E, S> extends Bloc<E, S> {
       add(getErrorEvent(error.toString()));
     }
   }
+
+  @override
+  Future<void> close() async => await super.close();
 }

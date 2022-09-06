@@ -30,6 +30,7 @@ class AppStyles {
   static const productNameTextStyle = TextStyle(fontFamily: _noirProRegular, fontSize: 13, color: AppColors.black);
   static const categoryTextStyle = TextStyle(fontFamily: _noirProRegular, fontSize: 15, color: AppColors.black);
   static const tagShowTextStyle = TextStyle(fontFamily: _noirProRegular, fontSize: 17, color: AppColors.black);
+  static const tagsTitleTextStyle = TextStyle(fontFamily: _noirProRegular, fontSize: 13, color: Color.fromRGBO(0, 0, 0, 0.3));
   static const tagsCountTextStyle = TextStyle(fontFamily: _noirProRegular, fontSize: 13, color: AppColors.purple);
   static const ratingTextStyle = TextStyle(fontFamily: _noirProSemiBold, fontSize: 17, color: AppColors.black);
   static const basedOnTextStyle = TextStyle(fontFamily: _noirProRegular, fontSize: 13, color: AppColors.ratingGray);
@@ -39,11 +40,26 @@ class AppStyles {
   static const cupertinoTitleTextStyle = TextStyle(fontFamily: _noirProRegular, fontSize: 13, color: AppColors.cupertinoTitle);
   static const settingsDescription = TextStyle(fontFamily: _noirProRegular, fontSize: 17, color: AppColors.black);
   static const settingsCheckBoxTextStyle = TextStyle(fontFamily: _noirProRegular, fontSize: 17, color: AppColors.purple);
+  static const settingsCheckBoxTextStyle2 = TextStyle(fontFamily: _noirProRegular, fontSize: 11, color: AppColors.purple);
   static const logoStyle = TextStyle(fontFamily: _noirProBold, fontSize: 25, color: AppColors.white);
   static const yourLogo = TextStyle(fontFamily: _noirProRegular, fontSize: 14, color: Color.fromRGBO(0, 0, 0, 0.3));
   static const changeRequisitesLogo = TextStyle(fontFamily: _noirProRegular, fontSize: 20, color: AppColors.purple);
   static const requisites = TextStyle(fontFamily: _noirProMedium, fontSize: 25, color: AppColors.black);
   static const ifRequisites = TextStyle(fontFamily: _noirProRegular, fontSize: 14, color: Color.fromRGBO(178, 178, 178, 1));
   static const redTextStyle = TextStyle(fontFamily: _noirProRegular, fontSize: 17, color: AppColors.red);
+  static const requisitesToggleInactive = TextStyle(fontFamily: _noirProSemiBold, fontSize: 14, color: AppColors.toggleInactive);
+  static const requisitesToggleActive = TextStyle(fontFamily: _noirProSemiBold, fontSize: 14, color: AppColors.toggleActive);
+  static const requisitesTitle = TextStyle(fontFamily: _noirProMedium, fontSize: 20, color: AppColors.black);
+  static const requisitesLabel = TextStyle(fontFamily: _noirProRegular, fontSize: 17, color: AppColors.black);
+  static const requisitesCommission = TextStyle(fontFamily: _noirProRegular, fontSize: 17, color: Color.fromRGBO(0, 0, 0, 0.3));
+  static const ordersTitles = TextStyle(fontFamily: _noirProRegular, fontSize: 17, color: AppColors.black);
+  static const balance = TextStyle(fontFamily: _noirProRegular, fontSize: 17, color: AppColors.purple);
+  static const requestTitle = TextStyle(fontFamily: _noirProMedium, fontSize: 14, color: Color.fromRGBO(178, 178, 178, 1));
+  static const requestText = TextStyle(fontFamily: _noirProMedium, fontSize: 14, color: AppColors.black);
+  static const selectCities = TextStyle(fontFamily: _noirProRegular, fontSize: 17, color: AppColors.black);
+  static const enterCity = TextStyle(fontFamily: _noirProRegular, fontSize: 13, color: AppColors.hint);
+  static const deleteCities = TextStyle(fontFamily: _noirProRegular, fontSize: 17, color: AppColors.purple);
+  static const cityName = TextStyle(fontFamily: _noirProRegular, fontSize: 15, color: AppColors.purple);
+  static const cityNameSelected = TextStyle(fontFamily: _noirProRegular, fontSize: 15, color: AppColors.white);
 
 }

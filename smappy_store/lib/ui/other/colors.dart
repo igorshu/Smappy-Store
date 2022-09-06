@@ -20,4 +20,7 @@ class AppColors {
   static const Color cupertinoAction = Color.fromRGBO(0, 122, 255, 1);
   static const Color cupertinoTitle = Color.fromRGBO(143, 143, 143, 1);
   static const Color delete = Color.fromRGBO(255, 49, 58, 1);
+  static const Color toggleInactive = Color.fromRGBO(0, 0, 0, 0.3);
+  static const Color toggleActive = white;
+  static const Color toggleBg = Color.fromRGBO(244, 244, 244, 1);
 }

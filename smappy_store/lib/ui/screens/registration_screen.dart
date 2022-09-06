@@ -7,6 +7,7 @@ import 'package:smappy_store/logic/registration_bloc/registration_bloc.dart';
 import 'package:smappy_store/ui/navigation/routes.dart';
 import 'package:smappy_store/ui/other/colors.dart';
 import 'package:smappy_store/ui/other/ui_utils.dart';
+import 'package:smappy_store/ui/other/validators.dart';
 import 'package:smappy_store/ui/screens/registration/reg_code_page.dart';
 import 'package:smappy_store/ui/screens/registration/reg_password_page.dart';
 import 'package:smappy_store/ui/screens/registration/reg_phone_page.dart';
@@ -160,8 +161,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         context.read<RegistrationBloc>().add(RegistrationError(error: codeError ?? "Unknown error"));
         break;
       case RegStep.shop:
-        var codeNameError = FormBuilderValidators.compose([FormBuilderValidators.required()])(_formKey.currentState!.value['shop_name']);
-        var codeAddressError = FormBuilderValidators.compose([FormBuilderValidators.required()])(_formKey.currentState!.value['shop_address']);
+        var codeNameError = FormBuilderValidators.compose([requiredField('reg_shop_name'.tr())])(_formKey.currentState!.value['shop_name']);
+        var codeAddressError = FormBuilderValidators.compose([requiredField('reg_address'.tr())])(_formKey.currentState!.value['shop_address']);
         context.read<RegistrationBloc>().add(RegistrationError(error: codeNameError ?? codeAddressError ?? "Unknown error"));
         break;
       default:

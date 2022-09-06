@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class Routes {
 
   static const String initial = welcome;
-  static const String loggedIn = settings;
+  static const String loggedIn = shop;
 
   static const String login = '/login';
   static const String smappy = '/smappy';
@@ -19,10 +19,13 @@ class Routes {
   static const String settings = '/settings';
 
   static void openScreen(BuildContext context, String path, {Object? data}) => context.beamToNamed(path, data: data);
+  static void openScreenAsFirst(BuildContext context, String path, {Object? data}) => context.beamToReplacementNamed(path, data: data);
 
   static void openLoginScreen(context) => openScreen(context, login);
+  static void openLoginScreenAsFirst(context) => openScreenAsFirst(context, login);
   static void openSmappyScreen(context) => openScreen(context, smappy);
   static void openWelcomeScreen(context) => openScreen(context, welcome);
+  static void openWelcomeScreenAsFirst(context) => openScreenAsFirst(context, welcome);
   static void openForgotPasswordScreen(context) {} // TODO forgot password
   static void openRegPhoneScreen(BuildContext context, String smappyCode) => openScreen(context, regPhone, data: smappyCode);
   static void openRegCodeScreen(context) => openScreen(context, regCode);

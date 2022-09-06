@@ -6,14 +6,14 @@ class ErrorText extends StatelessWidget {
 
   final String errorText;
   final EdgeInsets padding;
-  final bool visibility;
+  final bool? visibility;
 
-  const ErrorText(this.errorText, {Key? key, this.padding = const EdgeInsets.all(0), this.visibility = false}) : super(key: key);
+  const ErrorText(this.errorText, {Key? key, this.padding = const EdgeInsets.all(0), this.visibility}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Visibility(
-      visible: visibility,
+      visible: visibility ?? (errorText.isNotEmpty),
       child: Align(
         alignment: Alignment.centerLeft,
         child: Padding(

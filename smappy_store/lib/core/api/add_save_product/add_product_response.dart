@@ -5,7 +5,7 @@ import 'package:smappy_store/core/api/products/tag.dart';
 
 part 'add_product_response.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class ProductResponse {
 
   final int id;
@@ -22,7 +22,7 @@ class ProductResponse {
   final int? dislikesCount;
   final int? reviewsCount;
   final int? avgRating;
-  final List<Photo>? productPhotos;
+  @JsonKey(name: 'product_photos') final List<Photo>? productPhotos;
 
   ProductResponse(
     this.id, 

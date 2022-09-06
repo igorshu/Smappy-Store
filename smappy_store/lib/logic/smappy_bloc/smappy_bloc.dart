@@ -2,10 +2,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:smappy_store/core/repository/api_repo.dart';
 import 'package:smappy_store/logic/other/base_bloc.dart';
-import 'package:flutter_email_sender/flutter_email_sender.dart';
+import 'package:smappy_store/ui/other/ui_utils.dart';
 
 part 'smappy_bloc.freezed.dart';
-
 part 'smappy_event.dart';
 part 'smappy_state.dart';
 
@@ -51,15 +50,12 @@ class SmappyBloc extends BaseBloc<SmappyEvent, SmappyState>  {
   }
 
   _sendEmail(SendEmail event, Emitter<SmappyState> emit) async {
-    final Email email = Email(
-      body: 'Email: ${state.email}\n'
-          'Phone: ${state.phone}\n'
-          'Catalog: ${state.catalog}\n',
+    sendEmail(
+      recipient: 'stores@smappy.co',
       subject: 'Smappy',
-      recipients: ['stores@smappy.co'],
-      isHTML: false,
+      text: 'Email: ${state.email}\n'
+        'Phone: ${state.phone}\n'
+        'Catalog: ${state.catalog}\n'
     );
-
-    await FlutterEmailSender.send(email);
   }
 }
